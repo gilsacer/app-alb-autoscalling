@@ -35,7 +35,7 @@ resource "aws_autoscaling_group" "this" {
   health_check_grace_period = 240
   health_check_type         = "ELB"
   force_delete              = true
-  target_group_arns         = [aws_lb_target_group.this.id]
+  target_group_arns         = [aws_lb_target_group.tg_http.id]
 
   launch_template {
     id      = aws_launch_template.this.id
