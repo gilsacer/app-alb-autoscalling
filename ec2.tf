@@ -62,13 +62,13 @@ resource "aws_autoscaling_policy" "scaledown" {
   policy_type            = "SimpleScaling"
 }
 
-/* resource "aws_instance" "jenkins" {
+resource "aws_instance" "bastion" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 
-  vpc_security_group_ids = [aws_security_group.jenkins.id]
+  vpc_security_group_ids = [aws_security_group.bastion.id]
   subnet_id              = aws_subnet.this["pvt_b"].id
   availability_zone      = "${var.aws_region}b"
 
-  tags = merge(local.common_tags, { Name = "Jenkins Machine" })
-} */
+  tags = merge(local.common_tags, { Name = "Bastion" })
+}
