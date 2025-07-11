@@ -4,7 +4,6 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.97.0 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | >=3.1.0 |
 
 ## Providers
 
