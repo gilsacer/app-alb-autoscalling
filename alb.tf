@@ -6,8 +6,8 @@ resource "aws_lb" "this" {
   tags = merge(local.common_tags, { Name = "Terraform ALB" })
 }
 
-resource "aws_lb_target_group" "this" {
-  name     = "ALB-TG"
+resource "aws_lb_target_group" "tg_http" {
+  name     = "ALB-TG-HTTP"
   port     = 80
   protocol = "HTTP"
   vpc_id   = aws_vpc.this.id
@@ -17,14 +17,37 @@ resource "aws_lb_target_group" "this" {
     healthy_threshold = 5
   }
 }
+resource "aws_lb_target_group" "tg_https" {
+  name     = "ALB-TG-HTTPS"
+  port     = 443
+  protocol = "HTTPS"
+  vpc_id   = aws_vpc.this.id
 
-resource "aws_lb_listener" "this" {
+  health_check {
+    path              = "/"
+    healthy_threshold = 5
+  }
+}
+
+resource "aws_lb_listener" "listener_http" {
   load_balancer_arn = aws_lb.this.arn
   port              = 80
   protocol          = "HTTP"
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.this.arn
+    target_group_arn = aws_lb_target_group.tg_http.arn
   }
 }
+/* resource "aws_lb_listener" "listener_https" {
+  load_balancer_arn = aws_lb.this.arn
+  port              = 443
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-Res-2021-06"
+  certificate_arn   = ""
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.tg_https.arn
+  }
+} */

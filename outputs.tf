@@ -38,7 +38,7 @@ output "alb_id" {
   value = aws_lb.this.id
 }
 
-output "random_password" {
+/* output "random_password" {
   value     = random_password.password.result
   sensitive = true
-}
+} */

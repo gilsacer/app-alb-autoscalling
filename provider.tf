@@ -8,12 +8,6 @@ terraform {
     random = {
       source  = "hashicorp/random"
       version = ">=3.1.0"
-    }    
+    }
   }
-
-  backend "s3" {
-    region  = "us-east-1"
-    profile = "default"
-  }
-
 }

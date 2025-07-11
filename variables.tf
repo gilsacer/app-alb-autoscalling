@@ -8,11 +8,11 @@ variable "aws_profile" {
   description = ""
   default     = "default"
 }
-variable "aws_account_id" {
+/* variable "aws_account_id" {
   type        = number
   description = ""
-  default     = 445567090460
-}
+  default     = ""
+} */
 variable "service_name" {
   type        = string
   description = ""

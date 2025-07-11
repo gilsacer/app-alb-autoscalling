@@ -3,9 +3,9 @@ locals {
 
   common_tags = {
     Project   = "Dev-App-AutoScalling"
-    CreatedAt = "2025-06-12"
     ManagedBy = "Terraform"
-    Owner     = "Gilson BSP"
+    Owner     = "Gilson Infra-IAC"
     Service   = "Auto Scaling App"
+    Env       = "Dev"
   }
 }
