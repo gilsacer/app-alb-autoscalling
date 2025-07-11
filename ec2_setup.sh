@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo apt-get update
 sudo apt-get install -y apache2
-echo 'Hello from Terraform - Horizontal Networking' > /var/www/html/index.html
+echo 'Hello from WEB SERVER - IAC' > /var/www/html/index.html
 service httpd start
 
 sudo apt-get install -y stress-ng

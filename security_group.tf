@@ -108,7 +108,7 @@ resource "aws_security_group" "autoscaling" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["177.221.249.69/32"]
+    cidr_blocks = ["192.168.2.0/24", "192.168.3.0/24"]
   }
 
   ingress {
@@ -128,9 +128,9 @@ resource "aws_security_group" "autoscaling" {
   tags = merge(local.common_tags, { Name = "Auto Scaling" })
 }
 
-resource "aws_security_group" "jenkins" {
-  name        = "Jenkins"
-  description = "Allow incoming connections to Jenkins machine"
+resource "aws_security_group" "bastion" {
+  name        = "Bastion"
+  description = "Allow incoming connections to Bastion machine"
   vpc_id      = aws_vpc.this.id
 
   ingress {
@@ -154,5 +154,5 @@ resource "aws_security_group" "jenkins" {
     security_groups = [aws_security_group.web.id]
   }
 
-  tags = merge(local.common_tags, { Name = "Jenkins Machine" })
+  tags = merge(local.common_tags, { Name = "Bastion" })
 }

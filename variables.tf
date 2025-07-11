@@ -8,11 +8,6 @@ variable "aws_profile" {
   description = ""
   default     = "default"
 }
-/* variable "aws_account_id" {
-  type        = number
-  description = ""
-  default     = ""
-} */
 variable "service_name" {
   type        = string
   description = ""
@@ -26,5 +21,5 @@ variable "instance_type" {
 variable "instance_key_name" {
   type        = string
   description = ""
-  default     = "key-POC-EC2-teste-firewall"
+  default     = "key-"
 }

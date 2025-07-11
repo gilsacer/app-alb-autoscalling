@@ -1,9 +1,9 @@
 resource "aws_lb" "this" {
-  name            = "Terraform-ALB"
+  name            = "WEB-ALB"
   security_groups = [aws_security_group.alb.id]
   subnets         = [aws_subnet.this["pub_a"].id, aws_subnet.this["pub_b"].id]
 
-  tags = merge(local.common_tags, { Name = "Terraform ALB" })
+  tags = merge(local.common_tags, { Name = "WEB ALB" })
 }
 
 resource "aws_lb_target_group" "tg_http" {
